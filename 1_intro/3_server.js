@@ -7,3 +7,8 @@ var _ = require('lodash');
 let x = _.uniq(data);
 
 console.log(x)
+
+let isTrue = _.isString(23); // false
+
+console.log(isTrue);
+
