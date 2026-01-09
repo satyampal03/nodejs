@@ -232,6 +232,27 @@ app.listen(30, () => {
 ## NODEJS SERVER V/S DATABASE SERVER
 > A database server is a specialized computer program or system that manage databases. it store, retrive, and manage data effieciently.
 
-> The database server stores you'r applications data, When you'r node js server needs data, it sendsrequest to the database server, which sends back data to the node.js server 
+> The database server stores you'r applications data, When you'r node js server needs data, it sends request to the database server, which sends back data to the node.js server
+**(as per requirement of the data database server sends the data to the nodejs server) **
 ---------------------------------------------------------------
-Node.js server is responsible for handling HTTP Requests from clients (Like webbrowsers) and returning responcces (http requests comes fom india)
+> Node.js server is responsible for **handling HTTP Requests from clients** (Like web-browsers) and returning responces 
+LIKE :- (http requests comes fom india)
+> It process these requests, communicates with database server, and and sends data to the clients.
+
+
++-------------------+        +----------------------+        +------------------+
+|  Database Server |        |   Back-end Server    |        |      Client      |
++-------------------+        +----------------------+        +------------------+
+|                   |       |                      |       |                  |
+|  MongoDB Atlas    |<----->|  Node.js + Express   |<----->|  React App       |
+|  Database         |       |  (REST API)          |       |  Application     |
+|                   |       |                      |       |                  |
++-------------------+        +----------------------+        +------------------+
+
+        (MongoDB Driver)                (REST API Calls)
+
+```mermaid
+flowchart LR
+    DB[(MongoDB Atlas)] ---|MongoDB Driver| BE[Node.js + Express.js]
+    BE ---|REST API Calls| FE[React Application]
+
