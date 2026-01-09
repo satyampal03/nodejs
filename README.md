@@ -379,3 +379,21 @@ db.data.updateOne({name:'sachin', {$set:{age:24}}});
 > To delete in collection
 db.data.deleteOne({name:'suman'});
 
+
+
+## Mongo db compass GUI
+> It help to display the user interface of the database that's we can easily understand the lot of the data.
+### Download the [mongo db compass]
+> we can make changes mongo db GUI.
+
+### POSTMAN 
+> This tool helps us to write the backend api's pre frontend, it means that we pre create our api on backend server, after creation of creation API
+> we are able to interconnect with the database server and backend server
+
+> **Postman** is a tool used to **test **
+
+**APIs** (backend server endpoints) without writing frontend code.>> It lets you send requests like:
+1. GET → get data
+2. POST → create/send data
+3. PUT/PATCH → update data
+4. DELETE → delete data
