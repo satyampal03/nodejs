@@ -9,44 +9,10 @@ const Person = require('./models/person.js');
 const MenuItem = require('./models/Menue.js');
 
 
-app.get("/", function (req, res) {
+app.get("/menueItem", function (req, res) {
   res.send("hellow dear");
 });
-
-app.post('/menueItem', async(req, res)=>{
-  try{
-    const data = req.body;
-    const newItem = new MenuItem(data);
-
-    const response = await newItem.save(); // this method help to save the data into the database.
-
-    console.log('Data Proceed SuccessFul');
-    res.status(200).json(response);
-
-  }catch(error){
-    console.log('error Occure', error);
-    res.status(500).json({error: 'Enternal Servar Error'})
-  }
-})
-
-
-  app.get('/menueItem', async(req, res)=>{
-
-    try{
-
-      const data = await MenuItem.find();
-      console.log('data fetched successfully');
-
-      res.status(200).json(data);
-
-    }catch(err){
-     console.log('error occure', err);
-     res.status(500).json({err: 'Internal Servar Error'});
-  
-    }
-  })
-
-
+[]
   
 // post route to add a person
 app.post('/person', async(req,res) =>{
