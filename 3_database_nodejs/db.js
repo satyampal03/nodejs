@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const mongoURL = 'mongodb://127.0.0.1:27017/school';
 
 // 2. Setup the connection (Removed deprecated options)
-mongoose.connect(mongoURL);
+mongoose.connect(mongoURL); 
 
 /* mongoose.connect(mongoURL, {  
      useNewUrlParser : true,

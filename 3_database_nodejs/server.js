@@ -3,7 +3,7 @@ const app = express();
 const db = require('./db');
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 
 const Person = require('./models/person.js');
 const MenuItem = require('./models/Menue.js');
