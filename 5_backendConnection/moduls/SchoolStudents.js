@@ -25,6 +25,6 @@ const studentsSchema = new mongoose.Schema({
     }
 });
 
-const SchoolStudents = mongoose.model('abd', studentsSchema);
+const SchoolStudents = mongoose.model('abd', studentsSchema); // abd is the collection name here
 
 module.exports = SchoolStudents; // this name should be same as  the file name;

@@ -7,6 +7,7 @@ const db = require('./db');
 const student = require('./moduls/SchoolStudents');
 
 const bodyParser =  require('body-parser');
+const { error } = require('node:console');
 app.use(bodyParser.json());
 
 
@@ -30,20 +31,38 @@ app.post('/student', async(req, res)=>{
     
 })
 
-app.get('/student', async(req, res)=>{
+// app.get('/students', async(req, res)=>{
+//     try{
+//         const data = await student.find(); 
+
+//         console.log('data fetched successfully');
+
+//       res.status(200).json(data);
+
+//     }catch(error){
+//            console.log('Failed to save data');
+//            res.status(500).json({error : 'Internal Server Error'})
+//     };
+// });
+
+app.get('/student/:gender', async(req, res)=> {
     try{
-        const data = await student.find(); 
+        const genderType = req.params.gender ;  // :gender this variable is here; extract the work type from the gender parameter
+    if(genderType =='male' || genderType == 'female' || genderType == 'other'){
 
-        console.log('data fetched successfully');
+        const response = await student.find({gender:genderType});
 
-      res.status(200).json(data);
+        console.log('Response Fetched');
+        res.status(200).json({response});
 
-    }catch(error){
+    }else{
+        res.status(404).json({error : 'Invalid Work Type'});
+    }
+        }catch(error){
            console.log('Failed to save data');
            res.status(500).json({error : 'Internal Server Error'})
     };
-});
-
+})
 
 
 app.listen(4000, ()=>{
