@@ -59,6 +59,48 @@ router.get('/:gender', async(req, res)=> {
            console.log('Failed to save data');
            res.status(500).json({error : 'Internal Server Error'})
     };
-})
+});
+
+
+// Update Operations 
+router.put('/:id', async(req, res)=>{
+    try{
+        const studentId = req.params.id; // extrect id from the id parameter
+        const updateStudentData = req.body; // update data for the person
+
+        const response = await  student.findByIdAndUpdate(studentId, updateStudentData, {
+            new: true,
+            runValidators:true
+        });
+
+        if(!response){
+            console.log('Student Not Found');
+            res.status(404).json({error : 'internal Server Error'});
+        }
+    } catch(error){
+           console.log('Failed to save data');
+           res.status(500).json({error : 'Internal Server Error'});
+    };
+});
+
+
+// Delete Operations  (using delete method);
+router.put('/:id', async(req, res)=>{
+    try{
+        const studentId = req.params.id; // extrect id from the id parameter
+       
+        const response = await  student.findByIdAndDelete(studentId);
+
+        if(!response){
+            console.log('Student Not Found');
+            res.status(404).json({error : 'internal Server Error'});
+        }
+        
+    } catch(error){
+           console.log('Failed to save data');
+           res.status(500).json({error : 'Internal Server Error'});
+    };
+});
+
 
 module.exports = router;
