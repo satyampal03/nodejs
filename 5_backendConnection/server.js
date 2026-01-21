@@ -11,6 +11,9 @@ const bodyParser =  require('body-parser');
 const { error } = require('node:console');
 app.use(bodyParser.json());
 
+app.use('/', function(req,res){
+    res.send('you can acces ~ WELCOME MY WORLD');
+})
 
 const studentRoutes = require('./routes/studentsRoute')
 
