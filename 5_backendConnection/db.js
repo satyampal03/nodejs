@@ -2,10 +2,9 @@ const mongoose = require('mongoose'); // driver mongoose
 
 // DOTENV FILE EXTRECTING 
 require('DB_URL').config();
-const DB_URL = process.env.DB_URL;
 
 // const mongoURL = 'mongodb://127.0.0.1:27017/school'; // mongodb url
-const mongoURL = DB_URL; // online database server address
+const mongoURL = process.env.DB_URL; // online database server address
 
 mongoose.connect(mongoURL); // connection  setup
 
