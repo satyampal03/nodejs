@@ -20,8 +20,10 @@ const studentRoutes = require('./routes/studentsRoute')
 app.use('/student',studentRoutes );
 
 // DOTENV PORT  Extrecting ~  
-const PORT = process.env.PORT || 3000
+// const PORT = process.env.PORT || 3000
 
-app.listen(PORT, ()=>{
-    console.log('Server is responding on 4000 Port');
+const PORT = process.env.PORT;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
 });
