@@ -1,25 +1,25 @@
-const mongoose = require('mongoose'); // driver mongoose
-
-// DOTENV FILE EXTRECTING 
+const mongoose = require('mongoose');
 require('dotenv').config();
 
-// const mongoURL = 'mongodb://127.0.0.1:27017/school'; // mongodb url
-const mongoURL = process.env.DB_URL; // online database server address
+const mongoURL = process.env.DB_URL;
 
-mongoose.connect(mongoURL); // connection  setup
-
-const db = mongoose.connection; // 
-
-db.on('connected', ()=>{
-    console.log('Database server Connected to the backend server');
+mongoose.connect(mongoURL, {
+  tls: true,
+  serverSelectionTimeoutMS: 5000
 });
 
-db.on('disconnected', ()=>{
-    console.log('Database server disconnected to the backend server');
+const db = mongoose.connection;
+
+db.on('connected', () => {
+  console.log('✅ Database server connected');
 });
 
-db.on('erroe', ()=>{
-    console.log('Database connection facing Error');
+db.on('error', (err) => {
+  console.error('❌ Database connection error:', err);
+});
+
+db.on('disconnected', () => {
+  console.log('⚠️ Database server disconnected');
 });
 
 module.exports = db;
