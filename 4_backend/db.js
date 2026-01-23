@@ -9,7 +9,6 @@ const mongoURL = `mongodb://127.0.0.1:27017/demo`;
 
 mongoose.connect(mongoURL);
 
-
 const db = mongoose.connection;
 
 // db events such as the (on connected, on error, on disconnected);
