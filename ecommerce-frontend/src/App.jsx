@@ -3,6 +3,10 @@ import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import ProductList from './components/ProductList';
 import ProductDetails from "./pages/ProductDetails";
+import Cart from './pages/Cart';
+
+import { Link } from "react-router-dom";
+
 
 const App = () => {
 
@@ -27,7 +31,12 @@ useEffect(() => {
     <Routes>
         <Route  path="/" element={<ProductList data={products}/>} />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path='/cart' element={<Cart/>} />
     </Routes>
+
+    <div style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
+  <Link to="/cart">Go to Cart</Link>
+</div>
   </>
 }
 

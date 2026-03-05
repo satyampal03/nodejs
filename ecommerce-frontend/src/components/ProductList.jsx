@@ -1,8 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
+// add to cart globallly implementation
+
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const ProductList = ({data}) => {
+
+    const {addToCart} = useContext(CartContext);
 
   return <>
     <div className="container">
@@ -21,7 +27,10 @@ const ProductList = ({data}) => {
           <p><strong>Category:</strong> {p.category}</p>
           <p className="description">{p.description}</p>
 
-          <button className="add_to_cart">Add to Cart</button>
+          <button 
+          className="add_to_cart" 
+          onClick={()=>addToCart(p)}
+          >Add to Cart</button>
 
         </div>
         <div className="product-footer">
@@ -32,6 +41,7 @@ const ProductList = ({data}) => {
     ))}
   </div>
 </div>
+
 
   </>
 }
