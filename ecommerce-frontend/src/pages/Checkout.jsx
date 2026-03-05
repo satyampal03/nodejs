@@ -23,13 +23,58 @@ const Checkout = () => {
 
     console.log('Total CheckOut custumer have to pay====> ', total);
 
-    const handleOrder = () => {
+
+
+    // Sending data to the backend
+
+    // const handleOrder = () => {
+    //     if (!name || !address || !phoneNumber || !email) {
+    //         alert("Please fill all fields");
+    //         return;
+    //     }
+    //     setOrderPlaced(true);
+    // };
+
+    const handleOrder = async () => {
         if (!name || !address || !phoneNumber || !email) {
             alert("Please fill all fields");
             return;
         }
-        setOrderPlaced(true);
-    };
+
+        const orderData = {
+            customerName: name,
+            email: email,
+            phone: phoneNumber,
+            address: address,
+            products: cart,
+            total: total
+        }
+
+
+        try {
+            const res = await fetch("http://localhost:3030/api/orders", { // fetch tells the browser: "Go to this specific address
+                method: "POST", // By default, browsers just "GET" (ask for) data. By saying "POST", you are telling the server: "I am giving you something new to save."
+
+                headers: {
+                    "Content-Type": "application/json"  // "Warning: Contents are in JSON format."
+                },
+
+                body: JSON.stringify(orderData) // orderData is your JavaScript object (the name, address, etc.).
+            });
+
+            const data = await res.json();
+
+            // console.log("Order Saved:", data);
+
+            setOrderPlaced(true);
+
+        } catch (err) {
+             console.log("Order Error:", err);
+        }
+
+
+    }
+
 
     if (orderPlaced) {
         return (
@@ -47,7 +92,7 @@ const Checkout = () => {
 
         <div className='CheckOut_Container'>
             <h2 className="cart-title">Checkout Details</h2>
-            
+
             <div className='customer_form'>
                 <label>Full Name</label>
                 <input

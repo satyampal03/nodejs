@@ -18,7 +18,6 @@ const CartProvider = ({ children }) => {
     localStorage.setItem("Customer Shoping Cart", JSON.stringify(cart));
   }, [cart]);
 
-
  // Checking if existing 
   const addToCart = (product) => {
     const existing = cart.find(p => p._id === product._id);
