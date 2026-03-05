@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 require("dotenv").config(); // connection with env File
 
 const productRoutes = require('./routes/productRoutes');
+const orderRouted = require('./routes/orderRoutes');
 
 const app = express(); // express function
 
@@ -23,6 +24,9 @@ app.get("/", (req, res) => {
 
 // end-points get routed with same api/products routes
 app.use("/api/products", productRoutes);
+
+// Orders Route 
+app.use('/api/orders', orderRouted);
 
 //MongoDB connection
 mongoose
