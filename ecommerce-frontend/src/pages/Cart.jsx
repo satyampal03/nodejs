@@ -58,10 +58,18 @@ const Cart = () => {
                 <h3 className="total-amount">Total: ${total.toFixed(2)}</h3>
                 <div className="cart-actions">
                     <Link to="/" className="btn-secondary">Continue Shopping</Link>
-                    <button className="btn-primary">Checkout</button>
+
+                    <Link to="/checkout">
+                        <button className="btn-primary">Proceed to Checkout</button>
+                    </Link>
                 </div>
             </div>
+
+
         </div>
+
+
+
     );
 };
 

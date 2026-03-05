@@ -316,3 +316,114 @@
         justify-content: space-between;
     }
 }
+
+
+/* Order Successfully Proceed */
+
+/* Container for the success message */
+.order-success-container {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 500px;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.order-success-container h2 {
+    color: #2ecc71; /* Success Green */
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.order-success-container p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Success Icon (Optional: Add a checkmark if you like) */
+.success-icon {
+    font-size: 4rem;
+    color: #2ecc71;
+    margin-bottom: 20px;
+}
+
+
+
+/* Customer Form Fillup Setions */
+
+/* Checkout Container */
+.CheckOut_Container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form Layout */
+.customer_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* Inputs & Textarea */
+.customer_form input, 
+.customer_form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+.customer_form input:focus, 
+.customer_form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.customer_form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Submit Button */
+.CheckOut_Container button {
+    width: 100%;
+    padding: 14px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.CheckOut_Container button:hover {
+    background-color: #27ae60;
+}
+
+.CheckOut_Container button:active {
+    transform: scale(0.98);
+}
+
+/* Labels (if you decide to add them later) */
+.customer_form label {
+    font-weight: 600;
+    margin-bottom: -10px;
+    font-size: 0.9rem;
+    color: #555;
+}
