@@ -16,11 +16,12 @@ const Checkout = () => {
     const [orderPlaced, setOrderPlaced] = useState(false);
 
     const total = cart.reduce((sum, p) => {
-        sum + p.price * p.quantity, 0
-    })
+        return (sum + p.price * p.quantity)
+    }, 0)
+
+    // const total = cart.reduce((sum, p) => sum + p.price * p.quantity, 0);
 
     console.log('Total CheckOut custumer have to pay====> ', total);
-
 
     const handleOrder = () => {
         if (!name || !address || !phoneNumber || !email) {
