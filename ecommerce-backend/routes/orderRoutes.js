@@ -1,32 +1,43 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-const order = require('../models/Order');
+const order = require("../models/Order");
 
 //Create the Order
+router.post("/", async (req, res) => {
+  try {
+    const { customerName, address, email, phone, products, total } = req.body;
 
-router.post('/', async(req, res)=>{
-    try{
+    const newOrder = new order({
+      customerName,
+      address,
+      email,
+      phone,
+      products,
+      total,
+    });
 
-        const{customerName, address, email, phone, products, total} = req.body;
+    const savedOrder = await newOrder.save();
+    res.status(201).json(savedOrder);
+  } catch (err) {
+    res.status(505).json({ message: "Order Creation Error" });
+  }
+});
 
-        const newOrder = new order({
-            customerName,
-            address,
-            email,
-            phone,
-            products,
-            total
-        });
+// Get All orders
+
+router.get('/', async (req, res)=>{
+   try{
+    
+    const orders = await order.find().sort({ createdAt: -1 }); // sorted data comming times
+
+    res.json(orders);
 
 
-        const savedOrder = await newOrder.save();
-        res.status(201).json(savedOrder);
-
-    }catch(err){
-        res.status(505).json({message:'Order Creation Error'})
-    }
+   }catch(err){
+    res.status(500).json({message: "Error Fetching Data"})
+   }
 })
 
 module.exports = router;
