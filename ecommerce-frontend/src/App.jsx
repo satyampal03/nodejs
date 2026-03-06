@@ -6,6 +6,8 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Orders from './pages/Orders';
+import AdminAddProduct from './pages/AdminAddProduct';
+
 import { Link } from "react-router-dom";
 
 
@@ -26,6 +28,7 @@ const App = () => {
     })(); // The () here calls it immediately
   }, []);
 
+  console.log(products);
 
   return <>
 
@@ -35,14 +38,19 @@ const App = () => {
       <Route path='/cart' element={<Cart />} />
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/orders' element={<Orders />} />
+      <Route path='/products' element={<AdminAddProduct />} />
     </Routes>
 
     <div style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
       <Link to="/cart">Go to Cart</Link>
     </div>
 
-        <div style={{ padding: "50px", borderBottom: "1px solid #ccc" }}>
+    <div style={{ padding: "50px", borderBottom: "1px solid #ccc" }}>
       <Link to="/orders">Go to Orders </Link>
+    </div>
+
+    <div style={{ padding: "50px", borderBottom: "1px solid #ccc" }}>
+      <Link to="/products">List Products </Link>
     </div>
   </>
 }
