@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
 
 
 // Add Products to the DataBase
+/*
 router.post("/", async (req, res) => {
   try {
     const product = new Product(req.body);
@@ -27,6 +28,29 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+*/
+
+// Add the Products into the store
+router.post('/', async(req, res)=>{
+  try{
+
+    const {name, description, price, category, stock} = req.body;
+
+  const newProduct = new Product({
+    name,
+    description,
+    price,
+    category,
+    stock,
+  })
+
+  const savedProduct = await newProduct.save();
+  res.status(200).json(savedProduct);
+
+  }catch(err){
+    res.status(500).json({message:'Error Pproduct Creating'})
+  }
+})
 
 
 // Fined a Product From the Database

@@ -33,7 +33,7 @@ router.get('/', async (req, res)=>{
     const orders = await order.find().sort({ createdAt: -1 }); // sorted data comming times
 
     res.json(orders);
-
+    res.status(201).json({message: 'Data Fetched Successfully'})
 
    }catch(err){
     res.status(500).json({message: "Error Fetching Data"})
