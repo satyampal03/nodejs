@@ -1,5 +1,7 @@
 // import { setDriver } from 'mongoose';
 import React, { useEffect, useState } from 'react'
+const API = import.meta.env.VITE_API_URL
+
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -8,7 +10,7 @@ const Orders = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch("http://localhost:3030/api/orders")
+    fetch(`${API}/api/orders`)
       .then(res => res.json())
       .then(data => setOrders(data));
 

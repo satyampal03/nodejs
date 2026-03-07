@@ -4,6 +4,9 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+const API = import.meta.env.VITE_API_URL
+
+
 
 const Checkout = () => {
 
@@ -52,7 +55,7 @@ const Checkout = () => {
 
 
         try {
-            const res = await fetch("http://localhost:3030/api/orders", { // fetch tells the browser: "Go to this specific address
+            const res = await fetch(`${API}/api/orders`, { // fetch tells the browser: "Go to this specific address
                 method: "POST", // By default, browsers just "GET" (ask for) data. By saying "POST", you are telling the server: "I am giving you something new to save."
 
                 headers: {

@@ -10,6 +10,8 @@ import AdminAddProduct from './pages/AdminAddProduct';
 
 import { Link } from "react-router-dom";
 
+const API = import.meta.env.VITE_API_URL
+
 
 const App = () => {
 
@@ -19,7 +21,7 @@ const App = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("http://localhost:3030/api/products");
+        const res = await fetch(`${API}/api/products`);
         const data = await res.json();
         setProducts(data);
       } catch (err) {

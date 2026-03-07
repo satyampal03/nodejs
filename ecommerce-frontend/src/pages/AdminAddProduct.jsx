@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+const API = import.meta.env.VITE_API_URL
 
 
 function AdminAddProduct() {
@@ -32,7 +33,7 @@ function AdminAddProduct() {
         //  console.log('-------------->',productData);
 
         try {
-            const res = await fetch("http://localhost:3030/api/products", {
+            const res = await fetch(`${API}/api/products`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

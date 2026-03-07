@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+const API = import.meta.env.VITE_API_URL
 
 const ProductDetails = () => {
      const { id } = useParams();
@@ -15,7 +16,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3030/api/products/${id}`)
+    fetch(`${API}/api/products/${id}`)
       .then(res => res.json())
       .then(data => setProduct(data));
   }, [id]);
