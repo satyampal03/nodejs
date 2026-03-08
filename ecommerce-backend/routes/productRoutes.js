@@ -1,8 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router(); // router Functon
 
 const Product = require("../models/Product"); // Product Schema
-
 
 // Get Products From DatabaseS
 router.get("/", async (req, res) => {
@@ -14,7 +13,6 @@ router.get("/", async (req, res) => {
     console.log("Server Side Error Produt API");
   }
 });
-
 
 // Add Products to the DataBase
 /*
@@ -31,27 +29,24 @@ router.post("/", async (req, res) => {
 */
 
 // Add the Products into the store
-router.post('/', async(req, res)=>{
-  try{
+router.post("/", async (req, res) => {
+  try {
+    const { name, description, price, category, stock } = req.body;
 
-    const {name, description, price, category, stock} = req.body;
+    const newProduct = new Product({
+      name,
+      description,
+      price,
+      category,
+      stock,
+    });
 
-  const newProduct = new Product({
-    name,
-    description,
-    price,
-    category,
-    stock,
-  })
-
-  const savedProduct = await newProduct.save();
-  res.status(200).json(savedProduct);
-
-  }catch(err){
-    res.status(500).json({message:'Error Pproduct Creating'})
+    const savedProduct = await newProduct.save();
+    res.status(200).json(savedProduct);
+  } catch (err) {
+    res.status(500).json({ message: "Error Pproduct Creating" });
   }
-})
-
+});
 
 // Fined a Product From the Database
 router.get("/:id", async (req, res) => {
@@ -72,9 +67,9 @@ router.get("/:id", async (req, res) => {
 // delete product by id
 router.delete("/:id", async (req, res) => {
   try {
-    const userRequestedId = req.params.id;
+    const userRequested_Id = req.params.id;
 
-    const deletedProduct = await Product.findByIdAndDelete(userRequestedId);
+    const deletedProduct = await Product.findByIdAndDelete(userRequested_Id);
 
     if (!deletedProduct) {
       res.status(404).json({ message: "Product Not Found" });
@@ -86,20 +81,20 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-
-
-// Update product 
+// Update product
 router.put("/:id", async (req, res) => {
   try {
-
-    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const product_Id = req.params.id;
+    
+    const updated = await Product.findByIdAndUpdate(product_Id, req.body, {
+      new: true,
+    });
 
     if (!updated) {
       return res.status(404).json({ message: "Product not found" });
     }
 
     res.json(updated);
-    
   } catch (error) {
     res.status(400).json({ message: "Invalid product id" });
   }
