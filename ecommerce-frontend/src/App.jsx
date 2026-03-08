@@ -7,6 +7,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Orders from './pages/Orders';
 import AdminAddProduct from './pages/AdminAddProduct';
+import AdminProducts from './pages/AdminProducts';
 
 import { Link } from "react-router-dom";
 
@@ -26,8 +27,8 @@ const App = () => {
         setProducts(data);
       } catch (err) {
         console.error(err);
-      }
-    })(); // The () here calls it immediately
+     }
+    })(); 
   }, []);
 
   console.log(products);
@@ -41,6 +42,7 @@ const App = () => {
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/orders' element={<Orders />} />
       <Route path='/products' element={<AdminAddProduct />} />
+      <Route path='/adminProducts' element={<AdminProducts />} />
     </Routes>
 
     <div style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
@@ -53,6 +55,12 @@ const App = () => {
 
     <div style={{ padding: "50px", borderBottom: "1px solid #ccc" }}>
       <Link to="/products">List Products </Link>
+    </div>
+
+
+    
+    <div style={{ padding: "50px", borderBottom: "1px solid #ccc" }}>
+      <Link to="/adminProducts">Admin Products </Link>
     </div>
   </>
 }
