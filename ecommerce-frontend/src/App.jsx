@@ -8,6 +8,7 @@ import Checkout from './pages/Checkout';
 import Orders from './pages/Orders';
 import AdminAddProduct from './pages/AdminAddProduct';
 import AdminProducts from './pages/AdminProducts';
+import AdminEditProduct from './pages/AdminEditProduct';
 
 import { Link } from "react-router-dom";
 
@@ -41,8 +42,11 @@ const App = () => {
       <Route path='/cart' element={<Cart />} />
       <Route path='/checkout' element={<Checkout />} />
       <Route path='/orders' element={<Orders />} />
-      <Route path='/products' element={<AdminAddProduct />} />
-      <Route path='/adminProducts' element={<AdminProducts />} />
+
+      <Route path='/admin' element={<AdminProducts />} />
+
+      <Route path='/admin/products' element={<AdminAddProduct />} />
+      <Route path='/admin/edit-product/:id' element={<AdminEditProduct />} />
     </Routes>
 
     <div style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
@@ -54,13 +58,13 @@ const App = () => {
     </div>
 
     <div style={{ padding: "50px", borderBottom: "1px solid #ccc" }}>
-      <Link to="/products">List Products </Link>
+      <Link to="/admin/products">List Products </Link>
     </div>
 
 
     
     <div style={{ padding: "50px", borderBottom: "1px solid #ccc" }}>
-      <Link to="/adminProducts">Admin Products </Link>
+      <Link to="/admin">Admin Products </Link>
     </div>
   </>
 }

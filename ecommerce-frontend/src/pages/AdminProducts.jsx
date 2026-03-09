@@ -35,6 +35,22 @@ export default function AdminProducts() {
   };
 
 
+  // Edit Product and Fetch again 
+
+  // const editPoduct = async (id) => {
+
+  //   const confirmDelete = confirm("Delete this product?");
+  //   if (!confirmDelete) return;
+
+  //   await fetch(`${API}/api/products/${id}`, {
+  //     method: "DELETE"
+  //   });
+
+  //   fetchProducts(); 
+  // };
+
+
+
 
 
 
@@ -62,7 +78,7 @@ export default function AdminProducts() {
       <main className="admin-main">
         <header className="main-header">
           <h1>Product Management</h1>
-          <Link to="/products"><button className="add-btn" >+ Add New Product</button></Link>
+          <Link to="/admin/products"><button className="add-btn" >+ Add New Product</button></Link>
           
         </header>
 
@@ -81,7 +97,7 @@ export default function AdminProducts() {
               </div>
 
               <div className="card-actions">
-                <button className="edit-link">Edit</button>
+               <Link to={`/admin/edit-product/${p._id}`}> <button className="edit-link" >Edit</button> </Link> 
                 <button 
                   className="delete-btn" 
                   onClick={() => deleteProduct(p._id)}
