@@ -3,18 +3,20 @@
 
     import { useEffect } from 'react';
 
-     const AdminEditProduct = () => {
+    const API = import.meta.env.VITE_API_URL
 
-           const {id} = useParams();
+   const AdminEditProduct = () => {
+
+  const { id } = useParams();
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
-  useEffect(() => {
+useEffect(() => {
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
+    fetch(`${API}/api/products/${id}`)
       .then(res => res.json())
       .then(data => {
         setName(data.name);
@@ -25,18 +27,20 @@
 
   }, [id]);
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
-    const updatedProduct = {
-      name,
-      price,
-      category,
-      description
-    };
+  const updatedProduct = {
+    name,
+    price,
+    category,
+    description
+  };
 
-    await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
+  try {
+
+    const res = await fetch(`${API}/api/products/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -44,9 +48,14 @@
       body: JSON.stringify(updatedProduct)
     });
 
-    alert("Product Updated!");
+    if(res.ok){
+      alert("Product Updated!");
+    }
 
-  };
+  } catch (error) {
+    console.log("Update Error:", error);
+  }
+};
 
       return<>
             <div className="form-container">
