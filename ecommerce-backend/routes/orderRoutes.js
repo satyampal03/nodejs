@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
     });
 
     const savedOrder = await newOrder.save();
+    
     res.status(201).json(savedOrder);
   } catch (err) {
     res.status(505).json({ message: "Order Creation Error" });
