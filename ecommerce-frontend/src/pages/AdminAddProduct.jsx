@@ -14,8 +14,7 @@ function AdminAddProduct() {
 
     const [productListed, setProductListed] = useState(false);
 
-    // handleProductSave 
-
+    // handleProduct Save 
     const handleProductSave = async () => {
         if (!name || !category || !price || !description || !stock) {
             alert("Please Fill All Fields")
@@ -42,7 +41,6 @@ function AdminAddProduct() {
             })
 
             //    const data = await res.json();
-
             setProductListed(true)
 
         } catch (err) {
@@ -61,6 +59,7 @@ function AdminAddProduct() {
         );
     }
 
+ 
 
     return <>
 
