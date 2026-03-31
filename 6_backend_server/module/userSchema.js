@@ -12,6 +12,8 @@ const userSchema = new mongoose.scheema({
     password:{
         type :String,
         require :true
+
+        
     }
 });
 
