@@ -13,9 +13,6 @@ const userSchema = new mongoose.scheema({
         type :String,
         require :true
 
-
-        
-
     }
 });
 
