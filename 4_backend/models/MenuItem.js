@@ -10,6 +10,8 @@ const menuItemSchema = new mongoose.Schema({
     price:{
         type: Number,
         required: true,
+
+        
     },
     taste:{
         type :String,
